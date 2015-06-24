@@ -5,8 +5,9 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class GamePanel {
+public class GamePanel extends JPanel{
 	
 	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	

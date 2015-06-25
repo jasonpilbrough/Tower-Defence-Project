@@ -25,6 +25,10 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
+	public int getGameObjectArrayLength(){
+		return gameObjects.size();
+	}
+	
 	public void paint(Graphics g){
 		g.setColor(new Color(25, 70, 66));
 		//g.fillRect(0, 0, this.getWidth(), this.getHeight());

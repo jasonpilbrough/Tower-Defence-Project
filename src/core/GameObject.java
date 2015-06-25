@@ -92,6 +92,16 @@ public abstract class GameObject {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+	
+	
 	
 	
 

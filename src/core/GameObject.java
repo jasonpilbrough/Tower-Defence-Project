@@ -26,10 +26,24 @@ public abstract class GameObject {
     	double result = Math.toDegrees(Math.atan2(go.posX - this.getPosX(), (this.getPosY() - go.posY)));
     	return -result;
     }
+	
+	public double getAngle(double posX,double posY){
+    	double result = Math.toDegrees(Math.atan2(posX - this.getPosX(), (this.getPosY() - posY)));
+    	
+    	return -result;
+    }
     
     public double getDistance(GameObject go){
     	double xdiff = this.posX-go.posX;
     	double ydiff = this.posY-go.posY;
+    	double result = Math.sqrt((xdiff*xdiff)+(ydiff*ydiff));
+    	
+    	return result;
+    }
+    
+    public double getDistance(double posX,double posY){
+    	double xdiff = this.posX-posX;
+    	double ydiff = this.posY-posY;
     	double result = Math.sqrt((xdiff*xdiff)+(ydiff*ydiff));
     	
     	return result;

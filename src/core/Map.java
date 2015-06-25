@@ -3,8 +3,6 @@ package core;
 import java.awt.Graphics;
 import java.io.File;
 import java.util.Scanner;
-
-import main.Block;
 import towers.Tower;
 
 public class Map {

@@ -18,12 +18,11 @@ public class Block {
 	private int row,col;
 	private boolean[] borderOrientation = new boolean[4];
 	
-	public Block(boolean traversable, int terrain,int row,int col, boolean[] borderOrientation ) {
+	public Block(boolean traversable, int terrain,int row,int col) {
         this.traversable = traversable;
         this.terrain = terrain;
         this.col=col;
         this.row=row;  
-        this.borderOrientation=borderOrientation;
 
     }
 	
@@ -142,8 +141,16 @@ public class Block {
 		return width;
 	}
 
+	public static void setWidth(int width) {
+		Block.width = width;
+	}
+
 	public static int getHeight() {
 		return height;
+	}
+	
+	public static void setHeight(int height) {
+		Block.height = height;
 	}
 
 	public int getRow() {
@@ -157,6 +164,17 @@ public class Block {
 	public Tower getTower() {
 		return tower;
 	}
+
+	public void setBorderOrientation(boolean[] borderOrientation) {
+		this.borderOrientation = borderOrientation;
+	}
+
+	public int getTerrain() {
+		return terrain;
+	}
+	
+	
+	
 
   	
 }

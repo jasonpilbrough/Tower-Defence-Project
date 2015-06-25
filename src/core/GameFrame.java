@@ -9,11 +9,14 @@ import javax.swing.Timer;
 public class GameFrame extends JFrame implements ActionListener{
 	private GamePanel gp = new GamePanel();
 	private Timer t = new Timer(40,this);
+	private static int deltaTime;
 	
 	
 	
 	public GameFrame() {
+		deltaTime=40;
 		t.start();
+		
 	}
 		
 	public static void main(String[] args) {
@@ -31,7 +34,7 @@ public class GameFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		gp.update(40);
+		gp.update(deltaTime);
 		gp.repaint();
 		
 	}

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.io.File;
 import java.util.Scanner;
 
+import main.Block;
 import towers.Tower;
 
 public class Map {
@@ -255,8 +256,9 @@ public class Map {
 	                tempCount++; 
 	            }
 	        }
-	       // JOptionPane.showMessageDialog(null,temparr);
-	        return temparr;
+	        Block[] resizedArray= new Block[tempCount];
+	        resizedArray= temparr;
+	        return resizedArray;
 	    }
 	    
 	    public boolean placeTower(int row,int col,Tower t){

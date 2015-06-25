@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.io.File;
 import java.util.Scanner;
 
+import main.Block;
+import towers.Tower;
+
 public class Map {
 	private Block[][] blockArray;
 	private int numRows,numCols;
@@ -255,6 +258,18 @@ public class Map {
 	        }
 	       // JOptionPane.showMessageDialog(null,temparr);
 	        return temparr;
+	    }
+	    
+	    public boolean placeTower(int row,int col,Tower t){
+	        if(blockArray[row][col].placeTower(t)){
+	            return true;
+	        }else{
+	            return false;
+	        }
+	    }
+	    
+	    public Block getBlock(int row, int col){
+	    	return blockArray[row][col];
 	    }
 
 }

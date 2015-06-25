@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import monsters.Monster;
+
 public class GamePanel extends JPanel{
 	
 	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -27,6 +29,20 @@ public class GamePanel extends JPanel{
 	
 	public int getGameObjectArrayLength(){
 		return gameObjects.size();
+	}
+	
+	public ArrayList<Monster> getMonsters(){
+		ArrayList<Monster> m = new ArrayList<Monster>();
+		
+		
+		for (GameObject gameObject : gameObjects) {
+			if(gameObject instanceof Monster){
+				m.add((Monster)gameObject);
+			}
+		}
+		
+		
+		return m;
 	}
 	
 	public void paint(Graphics g){

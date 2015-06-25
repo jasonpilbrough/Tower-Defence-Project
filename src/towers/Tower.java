@@ -7,7 +7,7 @@ import monsters.Monster;
 import core.GameObject;
 import core.GamePanel;
 
-public class Tower extends GameObject {
+public abstract class Tower extends GameObject {
 	private double range, fireRate, damagePS , updateCount;
 	private GamePanel gamepanel;
 

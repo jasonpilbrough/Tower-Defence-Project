@@ -2,12 +2,12 @@ package towers;
 
 import java.awt.Image;
 import java.util.ArrayList;
-
+import bullets.Bullet;
 import monsters.Monster;
 import core.GameObject;
 import core.GamePanel;
 
-public abstract class Tower extends GameObject {
+public class Tower extends GameObject {
 	private double range, fireRate, damagePS , updateCount;
 	private GamePanel gamepanel;
 
@@ -29,8 +29,12 @@ public abstract class Tower extends GameObject {
 		ArrayList<Monster> monsters = gamepanel.getMonsters();
 		
 		for (Monster monster : monsters) {
-			if(getDistance(monster)<range && updateCount++%fireRate==0){
-				//gamepanel.addGameObject(go); ADD BULLET
+			if(getDistance(monster)<range){
+				if(updateCount++%fireRate==0){
+					gamepanel.addGameObject(new Bullet(this.getPosX(),this.getPosY(),getAngle(monster),5.0,monster,10,gamepanel));
+				}
+				
+				break;
 			}
 		}
 		

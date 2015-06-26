@@ -3,6 +3,9 @@ package core;
 import java.awt.Graphics;
 import java.io.File;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import towers.Tower;
 
 public class Map {
@@ -41,7 +44,8 @@ public class Map {
 	                          }
 	                            
 	                    }
-	                }                     
+	                } 
+	                s.close();
 	        } catch (Exception e) {
 	            System.out.println("Something went wrong");
 	        }
@@ -56,6 +60,7 @@ public class Map {
 	            	blockArray[r][c].paint(g,getStartDirection(),getFinishDirection());
 	            }
 	        }
+	        
 	    }
 	 
 	 public int getStartDirection(){
@@ -64,7 +69,7 @@ public class Map {
 	    	int tempCount=UtilityMethods.getArrayLength(temparr);
 	    	
 
-	    			
+	    		
 	    	
 	    	if(temparr[1].getCol() > temparr[0].getCol()){           
 	    		answer=90;  

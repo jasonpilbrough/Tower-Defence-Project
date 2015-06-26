@@ -2,6 +2,7 @@ package monsters;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 
 import core.Block;
 import core.GameObject;
@@ -20,6 +21,7 @@ public class Monster extends GameObject {
 	public Monster(double radius, Block[] path, double speed, double health, 
 			GamePanel gamepanel) {
 		super(path[0].getPosX(), path[0].getPosY(), 0, radius);
+		setImage(Toolkit.getDefaultToolkit().getImage("images/ship2.png"));
 		this.path = path;
 		this.speed = speed;
 		this.health = health;

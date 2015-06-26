@@ -21,8 +21,8 @@ public class Map {
 	            numRows = Integer.parseInt(splits[0]);
 	            numCols = Integer.parseInt(splits[1]);
 	            blockArray = new Block[numRows][numCols];
-	            Block.setWidth(30);
-	            Block.setHeight(30);
+	            Block.setWidth(40);
+	            Block.setHeight(40);
 	                
 	                for (int r = 0; r < numRows; r++) {
 	                         String line2 = s.nextLine();

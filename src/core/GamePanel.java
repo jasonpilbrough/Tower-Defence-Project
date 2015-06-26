@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,12 +17,16 @@ import monsters.Monster;
 
 public class GamePanel extends JPanel implements MouseListener{
 	
-	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+	
 	private Map map = new Map();
 	
 	public GamePanel(){
 		addMouseListener(this);
 	}
+	
+	
+	/*
+	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	
 	public void addGameObject(GameObject go){
 		gameObjects.add(go);
@@ -31,7 +36,8 @@ public class GamePanel extends JPanel implements MouseListener{
 	public void deleteGameObject(GameObject go){
 		
 		if(gameObjects.contains(go)){
-			gameObjects.remove(gameObjects.indexOf(go));
+			//int index = gameObjects.indexOf(go);
+			gameObjects.remove(go);
 		}else{
 			JOptionPane.showMessageDialog(null, "Could not delete object");
 		}
@@ -68,11 +74,77 @@ public class GamePanel extends JPanel implements MouseListener{
 	}
 	
 	public void update(int deltaTime){
-		for (GameObject gameObject : gameObjects) {
-			gameObject.update(deltaTime);
+		try {
+			for (GameObject gameObject : gameObjects) {
+				gameObject.update(deltaTime);
+			}
+		} catch (Exception e) {
+			//JOptionPane.showMessageDialog(null, gameObjects);
 		}
 	}
-
+	*/
+	
+	private GameObject[] gameObjects = new GameObject[10000] ;
+	private int gameObjectsCount;
+		
+		
+	
+	public void addGameObject(GameObject go){
+		gameObjects[gameObjectsCount++] = go;
+	
+	}
+	
+	public void deleteGameObject(GameObject go){
+		
+		int index=0;
+		for (int i = 0; i < gameObjectsCount; i++) {
+			if(gameObjects[i].equals(go)){
+				index =i;
+				break;
+			}
+		}
+		for (int i = index; i < gameObjectsCount; i++) {
+			gameObjects[i]=gameObjects[i+1];	
+		}
+		gameObjectsCount--;
+		
+		
+	}
+	
+	public int getGameObjectArrayLength(){
+		return gameObjectsCount;
+	}
+	
+	public ArrayList<Monster> getMonsters(){
+		ArrayList<Monster> m = new ArrayList<Monster>();
+		
+		
+		for (int i=0; i<gameObjectsCount;i++) {
+			if(gameObjects[i] instanceof Monster){
+				m.add((Monster)gameObjects[i]);
+			}
+		}
+		
+		
+		return m;
+	}
+	
+	public void paint(Graphics g){
+		map.paint(g);
+		for (int i=0; i<gameObjectsCount;i++) {
+			gameObjects[i].paint(g);
+		}
+		
+		
+	}
+	
+	public void update(int deltaTime){
+		
+		for (int i=0; i < gameObjectsCount; i++) {
+				gameObjects[i].update(deltaTime);
+			}
+		
+	}
 	
 	
 	@Override

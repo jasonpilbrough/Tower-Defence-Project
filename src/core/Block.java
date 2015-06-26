@@ -48,12 +48,12 @@ public class Block {
 		Graphics2D g =(Graphics2D)g2;
 		
 		if(terrain==0){
-            g.setColor(new Color(13,85,83));
+			g.setColor(new Color(25, 70, 66));
+            g.fillRect(col*width, row*height, width, height);
+			g.setColor(new Color(13,85,83));
             g.drawRect(col*width, row*height, width, height);
-        }
-		
-		
-		else {
+            
+        }else {
           
 			if(terrain==1){
 				g.setColor(new Color(0,35,35));

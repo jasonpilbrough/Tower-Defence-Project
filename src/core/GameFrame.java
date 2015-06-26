@@ -1,8 +1,10 @@
 package core;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -23,6 +25,11 @@ public class GameFrame extends JFrame implements ActionListener{
     	GameFrame gf = new GameFrame();
     	
     	gf.add(gf.gp,BorderLayout.CENTER);
+    	
+    	gf.setMinimumSize(new Dimension(907,650));
+        gf.setResizable(false);
+        gf.setSize(new Dimension(907,650));
+        
     	gf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gf.setVisible(true);
        

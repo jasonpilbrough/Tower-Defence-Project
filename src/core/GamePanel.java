@@ -12,6 +12,7 @@ import monsters.Monster;
 public class GamePanel extends JPanel{
 	
 	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+	private Map map = new Map();
 	
 	
 	public void addGameObject(GameObject go){
@@ -49,7 +50,7 @@ public class GamePanel extends JPanel{
 		g.setColor(new Color(25, 70, 66));
 		//g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		
+		map.paint(g);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.paint(g);
 		}

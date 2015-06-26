@@ -17,47 +17,46 @@ import monsters.Monster;
 
 public class GamePanel extends JPanel implements MouseListener{
 	
-	private GameObject[] gameObjects = new GameObject[10000] ;
-	private int gameObjectsCount;
-	
-	
+	private GameObject[] gameObjects = new GameObject[100000] ;
+	private int count;
 	private Map map = new Map();
+	
 	
 	public GamePanel(){
 		addMouseListener(this);
 	}
 	
 	public void addGameObject(GameObject go){
-		gameObjects[gameObjectsCount++] = go;
+		gameObjects[count++] = go;
 	
 	}
 	
 	public void deleteGameObject(GameObject go){
 		
 		int index=0;
-		for (int i = 0; i < gameObjectsCount; i++) {
+		for (int i = 0; i < count; i++) {
 			if(gameObjects[i].equals(go)){
 				index =i;
 				break;
 			}
 		}
-		for (int i = index; i < gameObjectsCount; i++) {
+		for (int i = index; i < count; i++) {
 			gameObjects[i]=gameObjects[i+1];	
 		}
-		gameObjectsCount--;
+		count--;
 		
 		
 	}
 	
 	public int getGameObjectArrayLength(){
-		return gameObjectsCount;
+		return count;
 	}
 	
 	public ArrayList<Monster> getMonsters(){
 		ArrayList<Monster> m = new ArrayList<Monster>();
 		
 		
-		for (int i=0; i<gameObjectsCount;i++) {
+		for (int i=0; i<count;i++) {
 			if(gameObjects[i] instanceof Monster){
 				m.add((Monster)gameObjects[i]);
 			}
@@ -69,7 +68,7 @@ public class GamePanel extends JPanel implements MouseListener{
 	
 	public void paint(Graphics g){
 		map.paint(g);
-		for (int i=0; i<gameObjectsCount;i++) {
+		for (int i=0; i<count;i++) {
 			gameObjects[i].paint(g);
 		}
 		
@@ -78,7 +77,7 @@ public class GamePanel extends JPanel implements MouseListener{
 	
 	public void update(int deltaTime){
 		
-		for (int i=0; i < gameObjectsCount; i++) {
+		for (int i=0; i < count; i++) {
 				gameObjects[i].update(deltaTime);
 			}
 		
@@ -126,6 +125,29 @@ public class GamePanel extends JPanel implements MouseListener{
 			addGameObject(new Monster(15, map.getPath(), 50,100,this));
 		}
 		
+		if (e.getButton() == MouseEvent.BUTTON2) {
+			while (true) {
+				int tower = 0;
+				int monster = 0;
+				int bullet = 0;
+				for (int i = 0; i < count; i++) {
+					if (gameObjects[i] instanceof Tower) {
+						tower++;
+					} else if (gameObjects[i] instanceof Monster) {
+						monster++;
+					} else if (gameObjects[i] instanceof Bullet) {
+						bullet++;
+					}
+				}
+
+				int a = JOptionPane.showConfirmDialog(null, "Towers: " + tower
+						+ "\nMonsters: " + monster + "\nBullets: " + bullet);
+				if (a == 1) {
+					break;
+				}
+			}
+
+		}
 	}
 
 	@Override
